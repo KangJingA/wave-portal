@@ -8,6 +8,9 @@ contract WavePortal {
 
     // state variable that stored in permanently in the local storage
     uint256 totalWaves;
+    // mapping type
+    // map the user address to the number of waves
+    mapping (address => uint) public noOfWaves; 
 
     constructor() {
         console.log("Yo yo, I am a contract and I am smart");
@@ -17,6 +20,7 @@ contract WavePortal {
     // public makes the function available on the blockchain
     function wave() public {
         totalWaves += 1;
+        noOfWaves[msg.sender] += 1;
         console.log("%s has waved!", msg.sender);
     }
 
